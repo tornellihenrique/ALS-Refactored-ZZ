@@ -787,7 +787,7 @@ void AAlsCharacter::RefreshRagdollingActorTransform(const float DeltaTime)
 	const auto bLocallyControlled{IsLocallyControlled()};
 	const auto PelvisTransform{GetMesh()->GetSocketTransform(UAlsConstants::PelvisBoneName())};
 
-	if (bLocallyControlled)
+	if (bLocallyControlled || (!bLocallyControlled && HasAuthority()))
 	{
 		SetRagdollTargetLocation(PelvisTransform.GetLocation());
 	}
